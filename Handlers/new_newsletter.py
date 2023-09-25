@@ -3,7 +3,7 @@ from aiogram.types import Message, CallbackQuery
 from aiogram.dispatcher import FSMContext
 from Handlers.States import SendNewsletter
 from Keyboards.Standart import kb_cancel
-from Keyboards import ikb_confirm, create_ikb_admin
+from Keyboards import ikb_confirm, create_ikb_admin, create_ikb_with_newsletter
 from Keyboards.Callback import admin_menu
 
 # акционное предложение для клиентов
@@ -31,7 +31,7 @@ async def save_new_album(call: CallbackQuery, state: FSMContext):
         data = await state.get_data()
         user_list = [user[0] for user in user_db.select_users_for_sales_alerts()]
         for user in user_list:
-            await bot.send_message(chat_id=user, text=data.get("text"))
+            await bot.send_message(chat_id=user, text=data.get("text"), reply_markup=create_ikb_with_newsletter())
         caption = f'Сообщение " {data.get("text")}" было разослано. Выбери действие:'
 
     else:
@@ -70,7 +70,7 @@ async def save_new_album(call: CallbackQuery, state: FSMContext):
         data = await state.get_data()
         user_list = [user[0] for user in user_db.select_users_for_new_product_alerts()]
         for user in user_list:
-            await bot.send_message(chat_id=user, text=data.get("text"))
+            await bot.send_message(chat_id=user, text=data.get("text"), reply_markup=create_ikb_with_newsletter())
         caption = f'Сообщение " {data.get("text")}" было разослано. Выбери действие:'
 
     else:

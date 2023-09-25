@@ -19,7 +19,6 @@ async def new_photo_catch(call: CallbackQuery, admin: bool):
 @dp.message_handler(state=NewPhoto.album)
 async def album_catch(message: Message, state: FSMContext):
     album_list = [album[0] for album in album_db.create_album_kb()]
-
     if message.text in album_list:
         await state.update_data({'album': message.text})
         await message.answer(text='Загрузите фото:', reply_markup=kb_cancel)

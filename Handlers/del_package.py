@@ -5,7 +5,7 @@ from Handlers.States import DellPackage
 from Keyboards.Standart import kb_cancel
 from Keyboards import ikb_confirm, create_ikb_admin, create_kb_package
 from Keyboards.Callback import admin_menu
-import config
+
 
 
 @dp.callback_query_handler(admin_menu.filter(button='del_package'), state=None)

@@ -23,25 +23,25 @@ def create_ikb_for_photographers():
 
 def create_ikb_video(type):
     ikb_video = InlineKeyboardMarkup(row_width=1)
-    video_list = [video[2] for video in product_db.select_product(type)]
+    video_list = [video[1] for video in product_db.select_product(type)]
     for video in video_list:
         ibtn=InlineKeyboardButton(text=video,
-                                  callback_data=for_photographers.new(menu='video', button=video))
+                                  callback_data=for_photographers.new(menu='video_or_preset', button=video))
         ikb_video.add(ibtn)
     ibtn_back = InlineKeyboardButton(text='Назад',
-                                     callback_data=main_menu.new(menu='main', button='back'))
+                                     callback_data=main_menu.new(menu='main', button='for_selling'))
     ikb_video.add(ibtn_back)
     return ikb_video
 
 
 def create_ikb_presets(type):
     ikb_presets = InlineKeyboardMarkup(row_width=1)
-    presets_list = [preset[2] for preset in product_db.select_product(type)]
+    presets_list = [preset[1] for preset in product_db.select_product(type)]
     for preset in presets_list:
         ibtn=InlineKeyboardButton(text=preset,
-                                  callback_data=for_photographers.new(menu='video', button=preset))
+                                  callback_data=for_photographers.new(menu='video_or_preset', button=preset))
         ikb_presets.add(ibtn)
     ibtn_back = InlineKeyboardButton(text='Назад',
-                                     callback_data=main_menu.new(menu='main', button='back'))
+                                     callback_data=main_menu.new(menu='main', button='for_selling'))
     ikb_presets.add(ibtn_back)
     return ikb_presets

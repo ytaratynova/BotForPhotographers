@@ -7,7 +7,7 @@ class Product(DataBase):
 
     def create_table_product(self):
         sql = '''CREATE TABLE IF NOT EXISTS product 
-        (product_id INTEGER PRIMARY KEY AUTOINCREMENT, type VARCHAR, name VARCHAR, photo VARCHAR)'''
+        (type VARCHAR, name VARCHAR PRIMARY KEY, photo VARCHAR)'''
         self.execute(sql, commit=True)
 
     def new_product(self, new_product: dict[str, str, str]):
@@ -16,18 +16,18 @@ class Product(DataBase):
         self.execute(sql, new_product, commit=True)
 
     def select_product(self, type: str):
-        sql = '''SELECT ALL name FROM product WHERE type=?'''
+        sql = '''SELECT * FROM product WHERE type=?'''
         return self.execute(sql, (type,), fetchall=True)
 
-    # def select_photo_id(self, cur_id: str):
-    #     sql = '''SELECT ALL photo_id FROM photos WHERE photo=?'''
-    #     return self.execute(sql, (cur_id,), fetchall=True)
-    #
-    # def del_all_album(self, album_name: dict[str, str]):
-    #     album = (album_name.get('name'),)
-    #     sql = '''DELETE FROM photos WHERE album=?'''
-    #     return self.execute(sql, album, commit=True, fetchall=True)
-    #
-    # def del_photo(self, photo_id: int):
-    #     sql = '''DELETE FROM photos WHERE photo_id=?'''
-    #     return self.execute(sql, (photo_id,), commit=True, fetchall=True)
+    def select_photo(self, name: str):
+        sql = '''SELECT photo FROM product WHERE name=?'''
+        return self.execute(sql, (name,), fetchall=True)
+
+    def select_name(self):
+        sql = '''SELECT name FROM product'''
+        return self.execute(sql, fetchall=True)
+
+    def del_product(self, product_name: dict[str, str]):
+        name = (product_name.get('name'),)
+        sql = '''DELETE FROM product WHERE name=?'''
+        return self.execute(sql, name, commit=True, fetchall=True)

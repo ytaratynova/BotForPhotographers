@@ -15,6 +15,8 @@ from .new_newsletter import dp
 from .for_photographers import dp
 from .order import dp
 from .user_for_photographers import dp
+from .new_product import dp
+from .del_product import dp
 from .admin import dp, create_ikb_admin, create_ikb_for_photographers_for_admin
 from .all import dp
 
@@ -28,4 +30,5 @@ __all__ = ['dp', 'ikb_start', 'create_ikb_settings', 'select_settings', 'create_
            'order',
            'del_photo',
            'del_package',
-           'dell_album']
+           'dell_album',
+           'new_product']

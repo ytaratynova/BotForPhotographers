@@ -42,3 +42,7 @@ class NewProduct(StatesGroup):
     name = State()
     photo = State()
     confirm = State()
+
+class DellProduct(StatesGroup):
+    name = State()
+    confirm = State()
