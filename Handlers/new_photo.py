@@ -1,4 +1,4 @@
-from loader import dp, db, photos_db, bot, album_db
+from loader import *
 from aiogram.types import Message, CallbackQuery, InputMediaPhoto, ReplyKeyboardRemove
 from aiogram.dispatcher import FSMContext
 from Handlers.States import NewPhoto
@@ -14,11 +14,7 @@ async def new_photo_catch(call: CallbackQuery, admin: bool):
     cur_chat = call.from_user.id
     await bot.send_message(text='Введите название альбома:', chat_id=cur_chat, reply_markup=kb_cancel)
     await NewPhoto.album.set()
-    # if admin:
-    #     await message.answer(text='Введите название альбома:', reply_markup=kb_cancel)
-    #     await NewPhoto.album.set()
-    # else:
-    #     await message.answer('У вас нет прав для выполнения этой команды!')
+
 
 @dp.message_handler(state=NewPhoto.album)
 async def album_catch(message: Message, state: FSMContext):
@@ -53,7 +49,7 @@ async def save_new_package(call: CallbackQuery, state: FSMContext):
         await call.answer('Отмена')
         caption = 'Добавление фото отменено. Выбери действие:'
 
-    await bot.send_photo(chat_id=call.from_user.id, photo=config.start_poster,
+    await bot.send_photo(chat_id=call.from_user.id, photo=main_poster.select_poster()[0],
                          caption=caption,
                          reply_markup=create_ikb_admin())
     await state.reset_data()

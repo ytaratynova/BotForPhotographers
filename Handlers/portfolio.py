@@ -7,7 +7,7 @@ import config
 @dp.callback_query_handler(main_menu.filter(button='portfolio'))
 async def my_portfolio(call: CallbackQuery):
     name = call.from_user.first_name
-    poster = config.start_poster
+    poster = main_poster.select_poster()[0]
     cur_chat = call.from_user.id
     cur_message = call.message.message_id
     caption = 'Выбери категорию, которую желаешь посмотреть:'

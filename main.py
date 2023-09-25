@@ -1,6 +1,6 @@
 from Handlers import dp
 from aiogram.utils import executor
-from loader import db, user_db, package_db, album_db, photos_db
+from loader import *
 import MiddleWare
 
 
@@ -10,7 +10,9 @@ async def on_start(_):
         package_db.create_table_package()
         album_db.create_table_album()
         photos_db.create_table_photos()
-
+        main_poster.create_table_poster()
+        if_products.create_table_if_products()
+        product_db.create_table_product()
         print('DB connected... ok!')
     except IOError:
         print('DB failure!')

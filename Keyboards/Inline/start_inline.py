@@ -1,6 +1,7 @@
 import callback as callback
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from Keyboards.Callback import main_menu
+from loader import if_products
 
 def ikb_start(admin: bool):
     ikb_start = InlineKeyboardMarkup(row_width=1)
@@ -27,6 +28,7 @@ def ikb_start(admin: bool):
 
     ikb_start.add(ibtn_portfolio)
     ikb_start.add(ibtn_prices)
-    ikb_start.add(ibtn_for_selling)
+    if (if_products.show_if_you_have_products()[0] == 1):
+        ikb_start.add(ibtn_for_selling)
     ikb_start.add(ibtn_settings)
     return ikb_start

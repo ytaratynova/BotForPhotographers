@@ -29,6 +29,16 @@ class DellPackage(StatesGroup):
     name = State()
     confirm = State()
 
-class SendSaleInfo(StatesGroup):
+class SendNewsletter(StatesGroup):
+    text = State()
+    confirm = State()
+
+class NewPoster(StatesGroup):
+    poster = State()
+    confirm = State()
+
+class NewProduct(StatesGroup):
+    type = State()
     name = State()
+    photo = State()
     confirm = State()

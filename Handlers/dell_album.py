@@ -1,4 +1,4 @@
-from loader import dp, db, album_db, bot, photos_db
+from loader import *
 from aiogram.types import Message, CallbackQuery
 from aiogram.dispatcher import FSMContext
 from Handlers.States import DellAlbum
@@ -40,7 +40,7 @@ async def del_album(call: CallbackQuery, state: FSMContext):
         await call.answer('Отмена')
         caption = f'Альбом НЕ БЫЛ удален! Выбери действие:'
 
-    await bot.send_photo(chat_id=call.from_user.id, photo=config.start_poster,
+    await bot.send_photo(chat_id=call.from_user.id, photo=main_poster.select_poster()[0],
                          caption=caption,
                          reply_markup=create_ikb_admin())
     await state.reset_data()

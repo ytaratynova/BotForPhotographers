@@ -6,6 +6,8 @@ settings = CallbackData('settings_option', 'menu', 'button')
 
 portfolio_menu = CallbackData('portfolio', 'menu', 'button')
 
+for_photographers = CallbackData('for_photographers', 'menu', 'button')
+
 portfolio_menu_photos = CallbackData('photos', 'menu', 'button', 'album', 'cur_id')
 
 price_menu = CallbackData('price_menu', 'menu', 'button')

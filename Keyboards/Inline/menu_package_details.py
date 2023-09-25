@@ -7,9 +7,6 @@ from Keyboards.Callback import price_menu_details, price_menu
 def create_ikb_package_details(package_id):
     ikb_package_details = InlineKeyboardMarkup(row_width=1)
 
-    # ibtn_book = InlineKeyboardButton(text='Заказать',
-    #                                  callback_data=price_menu_details.new(menu='price_menu_details', button='order',
-    #                                                                       package=package_id))
     ibtn_book = InlineKeyboardButton(text='Заказать',
                                      callback_data=price_menu_details.new(menu='price_menu_details', button='order',
                                                                           package=package_id),

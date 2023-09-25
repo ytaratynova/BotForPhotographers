@@ -20,9 +20,9 @@ def create_ikb_admin():
     ibtn_send_msg = InlineKeyboardButton(text='Рассылка',
                                                          callback_data=main_menu.new(
                                                              menu='admin_menu', button='send_info'))
-    ibtn_get_data = InlineKeyboardButton(text='Выгрузить данные',
-                                         callback_data=main_menu.new(
-                                             menu='admin_menu', button='get_data'))
+    # ibtn_get_data = InlineKeyboardButton(text='Выгрузить данные',
+    #                                      callback_data=main_menu.new(
+    #                                          menu='admin_menu', button='get_data'))
     ibtn_back = InlineKeyboardButton(text='Назад',
                                              callback_data=main_menu.new(menu='main', button='back'))
 
@@ -31,6 +31,6 @@ def create_ikb_admin():
     ikb_admin.add(ibtn_change_prices)
     ikb_admin.add(ibtn_change_for_photographers)
     ikb_admin.add(ibtn_send_msg)
-    ikb_admin.add(ibtn_get_data)
+    # ikb_admin.add(ibtn_get_data)
     ikb_admin.add(ibtn_back)
     return ikb_admin

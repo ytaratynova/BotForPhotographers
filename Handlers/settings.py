@@ -7,7 +7,7 @@ import config
 @dp.callback_query_handler(main_menu.filter(button='settings'))
 async def my_settings(call: CallbackQuery):
     name = call.from_user.first_name
-    poster = config.start_poster
+    poster = main_poster.select_poster()[0]
     cur_chat = call.from_user.id
     cur_message = call.message.message_id
     my_set = user_db.settings(cur_chat)
@@ -19,7 +19,7 @@ async def my_settings(call: CallbackQuery):
 @dp.callback_query_handler(main_menu.filter(menu='settings'))
 async def select_settings(call: CallbackQuery):
     cur_button = call.data.split(':')[-1]
-    poster = config.start_poster
+    poster = main_poster.select_poster()[0]
     cur_chat = call.from_user.id
     cur_message = call.message.message_id
     caption = 'Это твои настройки'
